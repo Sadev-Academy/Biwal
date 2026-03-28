@@ -1,0 +1,16 @@
+{
+  "name": "Biwal Sustainable Fashion",
+  "short_name": "Biwal",
+  "description": "Premium minimalist and sustainable apparel.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#212121",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
