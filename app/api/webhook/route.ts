@@ -1,13 +1,13 @@
 import Stripe from "stripe";
 import { headers } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { OrderService } from "@/lib/services/OrderService";
 import { EmailService } from "@/lib/services/EmailService";
 import { ErrorService } from "@/lib/services/ErrorService";
 
-export async function POST(req: Request) {
-  const body = await req.text();
+export async function POST(request: NextRequest) {
+  const body = await request.text();
   const signature = (await headers()).get("Stripe-Signature") as string;
 
   let event: Stripe.Event;

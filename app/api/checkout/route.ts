@@ -1,12 +1,12 @@
 import { auth } from "@/auth";
 import { stripe } from "@/lib/stripe";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { OrderService } from "@/lib/services/OrderService";
 import { ErrorService } from "@/lib/services/ErrorService";
 import { StoreService } from "@/lib/services/StoreService";
 
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
     const session = await auth();
     const store = await StoreService.getActiveStore();
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       return new NextResponse("Store not found", { status: 404 });
     }
 
-    const body = await req.json();
+    const body = await request.json();
     const { items } = body;
 
     if (!items || items.length === 0) {

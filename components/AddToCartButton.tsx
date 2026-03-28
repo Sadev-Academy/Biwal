@@ -8,6 +8,7 @@ import { Check, ShoppingCart } from "lucide-react";
 interface AddToCartButtonProps {
   product: {
     id: string;
+    variantId: string;
     name: string;
     price: number;
     image: string;
