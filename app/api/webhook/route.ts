@@ -18,9 +18,9 @@ export async function POST(request: NextRequest) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
-  } catch (error: any) {
-    await ErrorService.logError(error, { context: "Webhook signature verification" });
-    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 });
+  } catch (error: unknown) {
+    await ErrorService.logError(error instanceof Error ? error : new Error(String(error)), { context: "Webhook signature verification" });
+    return new NextResponse(`Webhook Error: ${error instanceof Error ? error.message : "Unknown"}`, { status: 400 });
   }
 
   const session = event.data.object as Stripe.Checkout.Session;
@@ -36,15 +36,15 @@ export async function POST(request: NextRequest) {
 
     try {
       // 1. Update Order Status
-      const order = await OrderService.updateOrderStatus(session.id || "", "paid");
+      await OrderService.updateOrderStatus(session.id || "", "paid");
       
       // 2. Send Confirmation Email
       if (customerEmail) {
         await EmailService.sendOrderConfirmation(customerEmail, orderId, session.amount_total ? session.amount_total / 100 : 0);
       }
       
-    } catch (error: any) {
-      await ErrorService.logError(error, { orderId, sessionId: session.id });
+    } catch (error: unknown) {
+      await ErrorService.logError(error instanceof Error ? error : new Error(String(error)), { orderId, sessionId: session.id });
       return new NextResponse("Error updating order", { status: 500 });
     }
   }

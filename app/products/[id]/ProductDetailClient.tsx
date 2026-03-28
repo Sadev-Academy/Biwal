@@ -7,7 +7,7 @@ import { useCart } from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 
 interface ProductDetailClientProps {
-  product: any;
+  product: { id: string; name: string; price: number; image: string; category: { name: string }; variants: Array<{ id: string; size: string | null; color: string | null; stock: number }>; [key: string]: unknown };
 }
 
 const ProductDetailClient = ({ product }: ProductDetailClientProps) => {
@@ -27,6 +27,7 @@ const ProductDetailClient = ({ product }: ProductDetailClientProps) => {
 
     addItem({
       ...product,
+      categoryName: product.category.name,
       variantId: selectedVariant.id,
       selectedSize: selectedVariant.size,
       selectedColor: selectedVariant.color,

@@ -17,7 +17,7 @@ const FilterSidebar = ({ categories }: FilterSidebarProps) => {
   const currentMinPrice = searchParams.get("minPrice");
   const currentMaxPrice = searchParams.get("maxPrice");
 
-  const updateFilters = (newFilters: any) => {
+  const updateFilters = (newFilters: Record<string, string | null>) => {
     const currentQueries = qs.parse(searchParams.toString());
     const updatedQueries = { ...currentQueries, ...newFilters };
 

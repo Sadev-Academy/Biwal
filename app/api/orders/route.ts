@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         totalAmount,
         status: "pending",
         orderItems: {
-          create: items.map((item: any) => ({
+          create: items.map((item: { id: string; quantity: number; price: number }) => ({
             productId: item.id,
             quantity: item.quantity,
             price: item.price,

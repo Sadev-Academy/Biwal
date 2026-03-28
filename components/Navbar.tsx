@@ -14,6 +14,7 @@ const Navbar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
@@ -50,7 +51,7 @@ const Navbar = () => {
                 
                 {isProfileOpen && (
                   <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-[#F5F5F5] shadow-xl py-2 rounded-sm slide-in-top">
-                    {(session.user as any).role === "ADMIN" && (
+                    {(session.user as { role?: string }).role === "ADMIN" && (
                       <Link 
                         href="/admin" 
                         onClick={() => setIsProfileOpen(false)}

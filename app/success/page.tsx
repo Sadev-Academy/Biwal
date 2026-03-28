@@ -14,6 +14,7 @@ const SuccessPage = () => {
   useEffect(() => {
     // Clear cart on successful payment
     cart.clearCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

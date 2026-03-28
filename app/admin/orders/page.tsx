@@ -1,7 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { ShoppingBag, Eye, RefreshCw } from "lucide-react";
-import Link from "next/link";
+import { RefreshCw } from "lucide-react";
 
 import { AdminService } from "@/lib/services/AdminService";
 
@@ -43,7 +42,7 @@ const AdminOrdersPage = async () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E5E5E5]">
-            {orders.map((order: any) => (
+            {orders.map((order: { id: string; user: { name: string | null; email: string }; totalAmount: number; status: string; createdAt: Date }) => (
               <tr key={order.id} className="hover:bg-[#F9F9F9] transition-colors">
                 <td className="px-6 py-4 text-xs font-mono text-[#707072]">#{order.id.slice(0, 8)}</td>
                 <td className="px-6 py-4">

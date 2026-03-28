@@ -2,8 +2,9 @@ export class ErrorService {
   /**
    * Log a runtime error with optional context
    */
-  static async logError(error: Error, context?: any) {
-    console.error(`[ErrorService] CRITICAL ERROR: ${error.message}`);
+  static async logError(error: unknown, context?: Record<string, unknown>) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    console.error(`[ErrorService] CRITICAL ERROR: ${errorMsg}`);
     if (context) {
       console.error(`[ErrorService] Context:`, JSON.stringify(context, null, 2));
     }

@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       return new NextResponse("No items in order", { status: 400 });
     }
 
-    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((item: any) => ({
+    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((item: { quantity: number; price: number; name: string; selectedSize?: string; image: string; id: string; variantId: string }) => ({
       quantity: item.quantity,
       price_data: {
         currency: "usd",
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       },
     }));
 
-    const totalAmount = items.reduce((total: number, item: any) => total + (item.price * item.quantity), 0);
+    const totalAmount = items.reduce((total: number, item: { price: number; quantity: number }) => total + (item.price * item.quantity), 0);
 
     // 1. Create Stripe checkout session first to have the ID
     // In a multi-tenant setup, we could use different Stripe accounts here
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       userId: session.user.id,
       totalAmount,
       stripeSessionId: stripeSession.id,
-      items: items.map((item: any) => ({
+      items: items.map((item: { id: string; variantId: string; quantity: number; price: number }) => ({
         productId: item.id,
         variantId: item.variantId,
         quantity: item.quantity,
@@ -72,8 +72,8 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ url: stripeSession.url });
-  } catch (error: any) {
-    await ErrorService.logError(error, { context: "Stripe Checkout" });
-    return new NextResponse(error.message || "Internal Server Error", { status: 500 });
+  } catch (error: unknown) {
+    await ErrorService.logError(error instanceof Error ? error : new Error(String(error)), { context: "Stripe Checkout" });
+    return new NextResponse(error instanceof Error ? error.message : "Internal Server Error", { status: 500 });
   }
 }

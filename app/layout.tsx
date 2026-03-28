@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
   title: "Biwal | Premium Sustainable Essentials",
   description: "Experience the ultimate in comfort and sustainability with Biwal's premium clothing collection. Minimalist designs for a modern lifestyle.",
   keywords: ["sustainable fashion", "minimalist clothing", "premium essentials", "eco-friendly apparel"],

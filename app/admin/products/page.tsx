@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { Package, Plus, Trash2, Edit } from "lucide-react";
+import { Plus, Trash2, Edit } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
@@ -24,7 +24,7 @@ const AdminProductsPage = async () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tighter text-[#212121]">Products</h1>
-          <p className="text-[#707072] text-sm mt-1">Manage your store's inventory.</p>
+          <p className="text-[#707072] text-sm mt-1">Manage your store&apos;s inventory.</p>
         </div>
         <Link href="/admin/products/new">
           <Button variant="primary" className="text-[10px] uppercase tracking-widest font-bold py-3 pr-6">
@@ -45,7 +45,7 @@ const AdminProductsPage = async () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E5E5E5]">
-            {products.map((product: any) => (
+            {products.map((product: { id: string; name: string; description: string; price: number; image: string; category: { name: string } }) => (
               <tr key={product.id} className="hover:bg-[#F9F9F9] transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center space-x-4">

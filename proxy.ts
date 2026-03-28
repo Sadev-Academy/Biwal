@@ -5,7 +5,7 @@ const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
-  const userRole = (req.auth?.user as any)?.role;
+  const userRole = (req.auth?.user as { role?: string })?.role;
   const { nextUrl } = req;
 
   // Protect admin routes

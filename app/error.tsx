@@ -25,7 +25,7 @@ export default function Error({ error, reset }: ErrorProps) {
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#707072]">System Error</p>
             <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-[#212121]">Something went <br /> wrong.</h1>
             <p className="text-[#707072] text-lg font-medium">
-              An unexpected error occurred. Our team has been notified and we're working to fix it.
+              An unexpected error occurred. Our team has been notified and we&apos;re working to fix it.
             </p>
           </div>
           

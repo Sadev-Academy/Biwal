@@ -9,7 +9,6 @@ import {
   ArrowLeft 
 } from "lucide-react";
 import { AdminService } from "@/lib/services/AdminService";
-import { redirect } from "next/navigation";
 
 export default async function AdminLayout({
   children,
@@ -24,7 +23,7 @@ export default async function AdminLayout({
       <div className="flex items-center justify-center min-h-screen bg-[#F5F5F5]">
         <div className="p-8 bg-white border border-[#E5E5E5] text-center max-w-md">
           <h2 className="text-2xl font-black mb-4">No Store Found</h2>
-          <p className="text-[#707072] mb-6">You don't have an active store associated with your account.</p>
+          <p className="text-[#707072] mb-6">You don&apos;t have an active store associated with your account.</p>
           <Link href="/" className="text-xs font-bold uppercase tracking-widest text-[#212121] underline">Back to Home</Link>
         </div>
       </div>

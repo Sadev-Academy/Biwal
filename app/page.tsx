@@ -61,7 +61,7 @@ export default async function Home() {
       >
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {featuredProducts.map((product: any) => (
+            {featuredProducts.map((product: { id: string; name: string; price: number; image: string; category: { name: string } }) => (
               <ProductCard
                 key={product.id}
                 id={product.id}
@@ -89,7 +89,7 @@ export default async function Home() {
       >
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category: any) => (
+            {categories.map((category: { id: string; name: string; image: string | null }) => (
               <Link 
                 key={category.id} 
                 href={`/products?category=${category.name}`}
@@ -140,7 +140,7 @@ export default async function Home() {
                   We exist at the intersection of intentionality and elegance. Every stitch tells a story of sustainability, and every silhouette is a testament to our commitment to a better future. 
                 </p>
                 <p>
-                  At {store.name}, we don't just make clothing; we build icons that represent a deeper respect for our world. Our journey is defined by the pursuit of the perfect essential.
+                  At {store.name}, we don&apos;t just make clothing; we build icons that represent a deeper respect for our world. Our journey is defined by the pursuit of the perfect essential.
                 </p>
               </div>
               <Link href="/products">

@@ -36,7 +36,7 @@ const LoginPage = () => {
         router.push("/");
         router.refresh();
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
     } finally {
       setIsLoading(false);
@@ -100,7 +100,7 @@ const LoginPage = () => {
           <DemoCredentials />
 
           <p className="mt-8 text-center text-sm text-[#707072]">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="text-[#212121] font-bold hover:underline underline-offset-4">
               Create one
             </Link>

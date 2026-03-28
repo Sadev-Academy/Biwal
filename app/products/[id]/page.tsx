@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     category: product.category.name,
     limit: 5,
   });
-  const filteredRelated = relatedProducts.filter((p: any) => p.id !== product.id).slice(0, 4);
+  const filteredRelated = relatedProducts.filter((p: { id: string }) => p.id !== product.id).slice(0, 4);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -103,7 +103,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <Container>
             <h2 className="text-3xl font-black tracking-tighter mb-12">Complete The Look</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {filteredRelated.map((relProduct: any) => (
+              {filteredRelated.map((relProduct: { id: string; name: string; price: number; image: string; category: { name: string } }) => (
                 <ProductCard 
                   key={relProduct.id} 
                   id={relProduct.id}

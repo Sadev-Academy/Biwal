@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
@@ -10,7 +9,6 @@ import { registerUser } from "@/app/actions/register-user";
 import { signIn } from "next-auth/react";
 
 const RegisterPage = () => {
-  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,7 +35,7 @@ const RegisterPage = () => {
           callbackUrl: "/",
         });
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
       setIsLoading(false);
     }

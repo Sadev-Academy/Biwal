@@ -20,7 +20,7 @@ const OrderSuccessPage = () => {
             <div className="space-y-2">
               <h1 className="text-4xl font-bold tracking-tighter">Order Confirmed!</h1>
               <p className="text-[#707072]">
-                Thank you for your purchase. We've sent a confirmation email with your order details.
+                Thank you for your purchase. We&apos;ve sent a confirmation email with your order details.
               </p>
             </div>
 

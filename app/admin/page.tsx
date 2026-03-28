@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import Container from "@/components/ui/Container";
 import { 
   ShoppingBag, 
   Package, 
@@ -18,12 +17,12 @@ const AdminPage = async () => {
   const customersCount = await prisma.order.groupBy({
     by: ['userId'],
     where: { storeId }
-  }).then((res: any[]) => res.length);
+  }).then((res: Array<{ userId: string }>) => res.length);
 
   const orders = await prisma.order.findMany({
     where: { storeId }
   });
-  const totalRevenue = orders.reduce((acc: number, order: any) => acc + order.totalAmount, 0);
+  const totalRevenue = orders.reduce((acc: number, order: { totalAmount: number }) => acc + order.totalAmount, 0);
 
   const stats = [
     {

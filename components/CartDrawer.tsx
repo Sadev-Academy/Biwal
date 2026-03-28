@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useCart } from "@/hooks/use-cart";
 import { X, Plus, Minus, ShoppingBag, Loader2 } from "lucide-react";
 import Button from "./ui/Button";
@@ -81,7 +80,7 @@ const CartDrawer = () => {
                 <div className="space-y-2">
                   <h3 className="text-sm font-black uppercase tracking-[0.2em] text-[#212121]">Your cart is empty</h3>
                   <p className="text-xs text-[#707072] font-medium leading-relaxed max-w-[200px] mx-auto">
-                    It looks like you haven't added any pieces to your collection yet.
+                    It looks like you haven&apos;t added any pieces to your collection yet.
                   </p>
                 </div>
                 <Button variant="outline" onClick={cart.onClose} className="px-10 py-4 text-[10px] uppercase font-black tracking-widest bg-transparent border-[#D9D9D9] hover:border-[#212121]">

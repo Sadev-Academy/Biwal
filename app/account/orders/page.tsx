@@ -39,7 +39,7 @@ const UserOrdersPage = async () => {
 
           {orders.length === 0 ? (
             <div className="py-20 text-center border-t border-[#F5F5F5]">
-              <p className="text-[#707072]">You haven't placed any orders yet.</p>
+              <p className="text-[#707072]">You haven&apos;t placed any orders yet.</p>
             </div>
           ) : (
             <div className="space-y-8">

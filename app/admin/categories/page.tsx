@@ -45,7 +45,7 @@ const AdminCategoriesPage = async () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E5E5E5]">
-            {categories.map((category: any) => (
+            {categories.map((category: { id: string; name: string; _count: { products: number } }) => (
               <tr key={category.id} className="hover:bg-[#F9F9F9] transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center space-x-3">
